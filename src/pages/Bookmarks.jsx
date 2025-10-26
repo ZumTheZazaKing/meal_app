@@ -36,11 +36,11 @@ const Bookmarks = () => {
                 <div className="flex flex-col gap-3">
                     {bookmarks && bookmarks.map((bookmark,i) => {
                         return (
-                            <MealItem
-                                meal={bookmark}
-                                categories={categories}
-                                key={i}
-                            />
+                          <MealItem
+                            meal={bookmark}
+                            categories={categories}
+                            key={i}
+                          />
                         );
                     })}
                 </div>
