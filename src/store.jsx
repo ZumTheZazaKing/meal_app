@@ -1,15 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 
 const StoreContext = createContext({});
 
 export const StoreProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("auth_token"));
-
-  return (
-    <StoreContext.Provider value={{ token, setToken }}>
-      {children}
-    </StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={{}}>{children}</StoreContext.Provider>;
 };
 
 export const useStore = () => useContext(StoreContext);
