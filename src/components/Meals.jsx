@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Searchbar from "./Searchbar";
 import MealList from "./MealList";
 import Categories from "./Categories";
-import MealListCategory from "./MealListCategory";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const categories = {
@@ -41,6 +40,7 @@ const Meals = () => {
       .then((res) => {
         let data = res.data;
         setMeals(data.meals);
+        console.log(data.meals);
         setLoading(false);
       });
   };
@@ -77,17 +77,11 @@ const Meals = () => {
           />
         </div>
       ) : (
-        <>
-          {selectedCategory ? (
-            <MealListCategory
-              categories={categories}
-              meals={meals}
-              selectedCategory={selectedCategory}
-            />
-          ) : (
-            <MealList categories={categories} meals={meals} />
-          )}
-        </>
+        <MealList
+          categories={categories}
+          meals={meals}
+          selectedCategory={selectedCategory}
+        />
       )}
     </div>
   );
