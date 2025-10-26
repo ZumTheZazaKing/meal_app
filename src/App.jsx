@@ -3,6 +3,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Main from "./pages/Main";
 import GuestRoute from "./wrappers/GuestRoute";
+import ProtectedRoute from "./wrappers/ProtectedRoute";
+import Bookmarks from "./pages/Bookmarks";
 
 function App() {
   return (
@@ -14,6 +16,10 @@ function App() {
         </Route>
 
         <Route path="/" element={<Main />} />
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/bookmarks" element={<Bookmarks />} />
+        </Route>
       </Routes>
     </Router>
   );

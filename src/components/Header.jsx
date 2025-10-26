@@ -1,9 +1,13 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaHome } from "react-icons/fa";
+
+import { useStore } from "../store";
 
 const Header = () => {
   const navigate = useNavigate();
+
+  const { currentPage } = useStore();
 
   const isAuth = !!localStorage.getItem("auth_token");
 
@@ -32,14 +36,30 @@ const Header = () => {
     navigate("/login");
   };
 
+  const goToBookmarks = () => {
+    navigate("/bookmarks");
+  };
+
+  const goMain = () => {
+    navigate("/");
+  };
+
   return (
     <div className="bg-zinc-100 shadow p-3 flex justify-between">
       <div>
-        {isAuth && (
-          <button className="cursor-pointer text-zinc-500">
-            <FaBookmark size={24} />
-          </button>
-        )}
+        {isAuth &&
+          (currentPage == "home" ? (
+            <button
+              onClick={goToBookmarks}
+              className="cursor-pointer text-zinc-500"
+            >
+              <FaBookmark size={24} />
+            </button>
+          ) : (
+            <button onClick={goMain} className="cursor-pointer text-zinc-500">
+              <FaHome size={24} />
+            </button>
+          ))}
       </div>
       {isAuth ? (
         <button

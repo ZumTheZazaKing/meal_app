@@ -5,6 +5,7 @@ const StoreContext = createContext({});
 
 export const StoreProvider = ({ children }) => {
   const [bookmarks, setBookmarks] = useState([]);
+  const [currentPage, setCurrentPage] = useState("home");
 
   useEffect(() => {
     getBookmarks();
@@ -27,7 +28,9 @@ export const StoreProvider = ({ children }) => {
   };
 
   return (
-    <StoreContext.Provider value={{ bookmarks, getBookmarks }}>
+    <StoreContext.Provider
+      value={{ bookmarks, getBookmarks, currentPage, setCurrentPage }}
+    >
       {children}
     </StoreContext.Provider>
   );
